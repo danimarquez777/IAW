@@ -14,9 +14,9 @@ Se han seleccionado dos dominios ficticios representativos de las dos marcas de 
 ---
 
 ### 2. Elección y justificación del MPM de Apache
-* **MPM Seleccionado:** `mpm_event`
+* **MPM Seleccionado:** mpm_event
 * **Justificación:** 
-  * `mpm_event` es la evolución del modelo de hilos (`mpm_worker`), optimizado para gestionar eficientemente conexiones en estado *Keep-Alive*.
+  * mpm_event es la evolución del modelo de hilos, optimizado para gestionar eficientemente conexiones en estado suspension.
   * Es la opción estándar más eficiente cuando Apache se coloca como servidor web de backend detrás de un proxy inverso como Nginx.
 
 ---
@@ -30,13 +30,13 @@ Se han seleccionado dos dominios ficticios representativos de las dos marcas de 
 
 ### Comportamiento por defecto
 * **Archivo de configuración:** `000-default-custom.conf`
-* **Explicación:** Apache evalúa las peticiones entrantes comparando la cabecera `Host` con el `ServerName` de los Virtual Hosts activos. Si la petición utiliza una IP o un dominio no registrado, cae en el primer Virtual Host cargado alfabéticamente, asegurando así un comportamiento controlado que no expone accidentalmente ninguna de las dos marcas.
+* **Explicación:** Apache evalúa las peticiones entrantes comparando la cabecera `Host` con el ServerName de los Virtual Hosts activos. Si la petición utiliza una IP o un dominio no registrado, cae en el primer Virtual Host cargado alfabéticamente, asegurando así un comportamiento controlado que no expone accidentalmente ninguna de las dos marcas.
 
 
 ## III. Fase 2 — Proxy Inverso Nginx, TLS y Seguridad
 
 ### 1. Terminación TLS y Tipo de Certificado
-- **Tipo de Clave y Curva:** Se han generado certificados SSL/TLS autofirmados utilizando criptografía de curva elíptica con la curva `secp384r1`.
+- **Tipo de Clave y Curva:** Se han generado certificados SSL/TLS autofirmados utilizando criptografía de curva elíptica.
 
 - **Justificación:** A diferencia de las claves RSA tradicionales, las claves ECDSA ofrecen un nivel equivalente de seguridad con un tamaño de clave significativamente menor. Esto reduce de forma drástica el uso de CPU en la negociación y agiliza el intercambio de claves en peticiones HTTPS de alta concurrencia.
 
