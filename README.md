@@ -16,7 +16,6 @@ Se han seleccionado dos dominios ficticios representativos de las dos marcas de 
 ### 2. Elección y justificación del MPM de Apache
 * **MPM Seleccionado:** mpm_event
 * **Justificación:** 
-  * mpm_event es la evolución del modelo de hilos, optimizado para gestionar eficientemente conexiones en estado suspension.
   * Es la opción estándar más eficiente cuando Apache se coloca como servidor web de backend detrás de un proxy inverso como Nginx.
 
 ---
