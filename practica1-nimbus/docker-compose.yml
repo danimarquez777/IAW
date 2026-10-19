@@ -1,0 +1,23 @@
+services:
+  apache:
+    build: ./apache
+    container_name: nimbus-apache
+    expose:
+      - "80"
+    networks:
+      - nimbus-network
+
+  nginx:
+    build: ./nginx
+    container_name: nimbus-nginx
+    ports:
+      - "8081:80"
+      - "8443:443"
+    depends_on:
+      - apache
+    networks:
+      - nimbus-network
+
+networks:
+  nimbus-network:
+    driver: bridge
